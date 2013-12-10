@@ -1,0 +1,109 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>imgCrop</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="styles/main.css">
+
+        <script src="scripts/libs/modernizr/modernizr.js"></script>
+
+        <style>
+            #imageCrop-selection {
+                -webkit-background-size: cover;
+                background-size: cover;
+                -ms-behavior: url(scripts/libs/imageCrop/background-size-polyfill.htc);
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <!-- <li><a href="#">About</a></li> -->
+                    <!-- <li><a href="#">Contact</a></li> -->
+                </ul>
+                <h3 class="text-muted">$.imageCrop()</h3>
+            </div>
+
+            <div class="jumbotron">
+                <div class="image-wrapper">
+                    <img alt="Image Cropping Plug-In" class="img-rounded" src="images/Anne-Hathaway.jpg" width="100%" />
+                </div>
+            </div>
+
+            <div class="row marketing">
+                <div class="col-lg-12">
+                    <h3>About the options</h3>
+                    <hr>
+
+                    <h4>allowMove</h4>
+                    <p>Specifies if the selection can be moved (default value is true).</p>
+
+                    <h4>allowResize</h4>
+                    <p>Specifies if the selection can be resized (default value is true).</p>
+
+                    <h4>allowSelect</h4>
+                    <p>Specifies if the user can make a new selection (default value is true).</p>
+
+                    <h4>aspectRatio</h4>
+                    <p>Specifies the grow proportion of the selection (default value is 0).</p>
+
+                    <h4>imagePath</h4>
+                    <p>URL path from the background image from the selection (default is "scripts/libs/imageCrop/outline.gif").</p>
+
+                    <h4>minSelect</h4>
+                    <p>The minimum area size to register a new selection (default value is [0, 0]).</p>
+
+                    <h4>minSize</h4>
+                    <p>The minimum size to make a new selection (default value is [0, 0]).</p>
+
+                    <h4>maxSize</h4>
+                    <p>The maximum size to make a new selection (default value is [0, 0]).</p>
+
+                    <h4>msPolyfill</h4>
+                    <p>Path to the polyfill file that will fix issues in IE8 from the 'background-size' CSS3 property (default is "scripts/libs/imageCrop/background-size-polyfill.htc").</p>
+
+                    <h4>outlineOpacity</h4>
+                    <p>The outline opacity (default value is 0.5).</p>
+
+                    <h4>overlayBgColor</h4>
+                    <p>The overlay background color (default is "#fff").</p>
+
+                    <h4>overlayOpacity</h4>
+                    <p>The overlay opacity (default value is 0.5).</p>
+
+                    <h4>selectionPosition</h4>
+                    <p>The selection position (default value is [0, 0]).</p>
+
+                    <h4>selectionWidth</h4>
+                    <p>The selection width (default value is 0).</p>
+
+                    <h4>selectionHeight</h4>
+                    <p>The selection height (default value is 0).</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>♥ from the PVT team</p>
+            </div>
+
+        </div>
+
+        <script src="scripts/libs/jquery/jquery.js"></script>
+
+        <script data-main="scripts/config" src="scripts/libs/requirejs/require.js"></script>
+</body>
+</html>
