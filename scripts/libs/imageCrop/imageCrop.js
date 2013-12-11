@@ -9,7 +9,7 @@
             , minSelect          : [0, 0]
             , minSize            : [0, 0]
             , maxSize            : [0, 0]
-            , msPolyfill         : 'scripts/libs/imageCrop/background-size-polyfill.htc'
+            // , msPolyfill         : 'scripts/libs/imageCrop/background-size-polyfill.htc'
             , outlineOpacity     : 0.5
             , overlayBgColor     : '#fff'
             , overlayOpacity     : 0.5
@@ -50,7 +50,7 @@
                 .height($image.height())
                 .insertAfter($image);
 
-        var $trigger = $('<div />')
+        var $trigger = $('<div id="image-crop-trigger" />')
                 .css({
                       backgroundColor : '#000000'
                     , opacity         : 0
@@ -69,12 +69,12 @@
                 })
                 .insertAfter($trigger);
 
-        var $selection = $('<div />')
+        var $selection = $('<div id="image-crop-selection" />')
                 .css({
-                      background     : 'url(' + $image.attr('src') + ') no-repeat'
+                      background     : 'url('+ $image.attr('src') +') no-repeat'
                     , backgroundSize : $image.width() + 'px ' + $image.height() + 'px'
                     , position       : 'absolute'
-                    , '-ms-behavior' : 'url('+options.msPolyfill+')'
+                    // , '-ms-behavior' : 'url('+options.msPolyfill+')'
                 })
                 .insertAfter($outline);
 
@@ -274,12 +274,29 @@
             return [x, y]
         };
 
+        function getImageTrueSize () {
+            var $src = $image.attr('src');
+
+            var $trueSizeImg = $('<img />')
+                .attr('src', $src).insertAfter('img');
+
+            var trueWidth = $trueSizeImg.width(),
+                trueHeight = $trueSizeImg.height();
+
+            $trueSizeImg.remove();
+
+            return [trueWidth, trueHeight]
+        }
+
         function getCropData () {
+            var trueImageSize = getImageTrueSize();
+
             return {
-                  selectionX      : options.selectionPosition[0]
-                , selectionY      : options.selectionPosition[1]
-                , selectionWidth  : options.selectionWidth
-                , selectionHeight : options.selectionHeight
+                  x      : options.selectionPosition[0] * trueImageSize[0] / $image.width()
+                , y      : options.selectionPosition[1] * trueImageSize[1] / $image.height()
+                , width  : options.selectionWidth * trueImageSize[0] / $image.width()
+                , height : options.selectionHeight * trueImageSize[1] / $image.height()
+                , path       : $image.attr('src')
                 , selectionExists : function() {
                     return selectionExists;
                 }

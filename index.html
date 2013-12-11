@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>imgCrop</title>
+        <title>$.imageCrop();</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -15,11 +15,10 @@
         <script src="scripts/libs/modernizr/modernizr.js"></script>
 
         <style>
-            #imageCrop-selection {
-                -webkit-background-size: cover;
-                background-size: cover;
-                -ms-behavior: url(scripts/libs/imageCrop/background-size-polyfill.htc);
-            }
+            /*#image-crop-selection {
+                filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/Anne-Hathaway.jpg', sizingMethod='scale');
+                -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/Anne-Hathaway.jpg', sizingMethod='scale');
+            }*/
         </style>
     </head>
     <body>
@@ -41,6 +40,17 @@
                 <div class="image-wrapper">
                     <img alt="Image Cropping Plug-In" class="img-rounded" src="images/Anne-Hathaway.jpg" width="100%" />
                 </div>
+
+                <form action="crop.php" method="post">
+                    <input id="x" name="x" type="hidden" />
+                    <input id="y" name="y" type="hidden" />
+                    
+                    <input id="width" name="width" type="hidden" />
+                    <input id="height" name="height" type="hidden" />
+                    
+                    <input id="path" name="path" type="hidden" />
+                    <input type="submit" value="Crop Image" class="btn btn-primary"/>
+                </form>
             </div>
 
             <div class="row marketing">
@@ -71,9 +81,6 @@
 
                     <h4>maxSize</h4>
                     <p>The maximum size to make a new selection (default value is [0, 0]).</p>
-
-                    <h4>msPolyfill</h4>
-                    <p>Path to the polyfill file that will fix issues in IE8 from the 'background-size' CSS3 property (default is "scripts/libs/imageCrop/background-size-polyfill.htc").</p>
 
                     <h4>outlineOpacity</h4>
                     <p>The outline opacity (default value is 0.5).</p>
