@@ -8,7 +8,7 @@ define(['jquery', 'imageCrop'], function ($) {
 
             $('img').imageCrop({
                   overlayOpacity : 0.5
-                , overlayBgColor : 'orange'
+                // , overlayBgColor : 'orange'
                 , onSelect       : updateForm
             });
         }
@@ -22,8 +22,6 @@ define(['jquery', 'imageCrop'], function ($) {
             $('input#height').val(crop.height);
             $('input#path').val(crop.path);
             selectionExists = crop.selectionExists;
-
-            console.log(crop);
         };
 
         return {

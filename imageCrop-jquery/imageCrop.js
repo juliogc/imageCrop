@@ -5,14 +5,12 @@
             , allowResize        : true
             , allowSelect        : true
             , aspectRatio        : 0
-            , imagePath          : 'scripts/libs/imageCrop/outline.gif'
             , minSelect          : [0, 0]
             , minSize            : [0, 0]
             , maxSize            : [0, 0]
-            // , msPolyfill         : 'scripts/libs/imageCrop/background-size-polyfill.htc'
             , outlineOpacity     : 0.5
-            , overlayBgColor     : '#fff'
             , overlayOpacity     : 0.5
+            , overlayBgColor     : '#fff'
             , selectionPosition  : [0, 0]
             , selectionWidth     : 0
             , selectionHeight    : 0
@@ -29,7 +27,8 @@
 
         var $holder = $('<div />')
                 .css({
-                    position : 'relative'
+                      overflow : 'hidden'
+                    , position : 'relative'
                 })
                 .width($image.width())
                 .height($image.height());
@@ -41,8 +40,7 @@
 
         var $overlay = $('<div id="image-crop-overlay" />')
                 .css({
-                      backgroundColor : options.overlayBgColor
-                    , opacity         : options.overlayOpacity
+                      opacity         : options.overlayOpacity
                     , overflow        : 'hidden'
                     , position        : 'absolute'
                 })
@@ -62,19 +60,22 @@
 
         var $outline = $('<div id="image-crop-outline" />')
                 .css({
-                      background : '#ffffff url(\''+ options.imagePath +'\')'
-                    , opacity    : options.outlineOpacity
-                    , overflow   : 'hidden'
-                    , position   : 'absolute'
+                      'box-shadow'         : '0 0 10px 1000px ' + options.overlayBgColor
+                    , '-webkit-box-shadow' : '0 0 10px 1000px ' + options.overlayBgColor
+                    , '-moz-box-shadow'    : '0 0 10px 1000px ' + options.overlayBgColor
+                    , '-ms-box-shadow'     : '0 0 10px 1000px ' + options.overlayBgColor
+                    , '-o-box-shadow'      : '0 0 10px 1000px ' + options.overlayBgColor
+                    , border               : '1px dashed #000'
+                    , opacity              : options.outlineOpacity
+                    , overflow             : 'hidden'
+                    , position             : 'absolute'
                 })
                 .insertAfter($trigger);
 
         var $selection = $('<div id="image-crop-selection" />')
                 .css({
-                      background     : 'url('+ $image.attr('src') +') no-repeat'
-                    , backgroundSize : $image.width() + 'px ' + $image.height() + 'px'
+                      backgroundSize : $image.width() + 'px ' + $image.height() + 'px'
                     , position       : 'absolute'
-                    // , '-ms-behavior' : 'url('+options.msPolyfill+')'
                 })
                 .insertAfter($outline);
 
@@ -200,6 +201,21 @@
                 return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
             }
         };
+
+        var isIE = {
+            ie8 : function () {
+                return window.navigator.userAgent.match(/IE 8/i);
+            },
+            ie9 : function () {
+                return window.navigator.userAgent.match(/IE 9/i);
+            },
+            ie10 : function () {
+                return window.navigator.userAgent.match(/IE 10/i);
+            },
+            any : function () {
+                return ( isIE.ie8() || isIE.ie9() || isIE.ie10() )
+            }
+        }
 
         if (options.selectionWidth > options.minSelect[0] && options.selectionHeight > options.minSelect[1]) {
             selectionExists = true;
