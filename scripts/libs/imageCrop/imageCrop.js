@@ -14,6 +14,7 @@
             , selectionPosition  : [0, 0]
             , selectionWidth     : 0
             , selectionHeight    : 0
+            , trueImageSize      : [0, 0]
 
             , onChange : function () {}
             , onSelect : function () {}
@@ -293,25 +294,28 @@
         function getImageTrueSize () {
             var $src = $image.attr('src');
 
-            var $trueSizeImg = $('<img />')
+            var $trueSizeImg = $('<img class="true-size-image" />')
                 .attr('src', $src).insertAfter('img');
 
-            var trueWidth = $trueSizeImg.width(),
-                trueHeight = $trueSizeImg.height();
+            $trueSizeImg.load(function () {
+                var trueWidth = $trueSizeImg.width(),
+                    trueHeight = $trueSizeImg.height();
 
-            $trueSizeImg.remove();
+                options.trueImageSize[0] = trueWidth;
+                options.trueImageSize[1] = trueHeight;
 
-            return [trueWidth, trueHeight]
+                setTimeout(function() {
+                    $trueSizeImg.remove();
+                }, 500);
+            });
         }
 
         function getCropData () {
-            var trueImageSize = getImageTrueSize();
-
             return {
-                  x      : options.selectionPosition[0] * trueImageSize[0] / $image.width()
-                , y      : options.selectionPosition[1] * trueImageSize[1] / $image.height()
-                , width  : options.selectionWidth * trueImageSize[0] / $image.width()
-                , height : options.selectionHeight * trueImageSize[1] / $image.height()
+                  x      : options.selectionPosition[0] * options.trueImageSize[0] / $image.width()
+                , y      : options.selectionPosition[1] * options.trueImageSize[1] / $image.height()
+                , width  : options.selectionWidth * options.trueImageSize[0] / $image.width()
+                , height : options.selectionHeight * options.trueImageSize[1] / $image.height()
                 , path       : $image.attr('src')
                 , selectionExists : function() {
                     return selectionExists;
@@ -734,6 +738,8 @@
 
             updateInterface('releaseSelection');
         };
+
+        getImageTrueSize();
     };
 
     $.fn.imageCrop = function (customOptions) {
