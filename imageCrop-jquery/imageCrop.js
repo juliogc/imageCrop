@@ -295,7 +295,7 @@
             var $src = $image.attr('src');
 
             var $trueSizeImg = $('<img class="true-size-image" />')
-                .attr('src', $src).insertAfter('img');
+                .attr('src', $src).insertAfter($image);
 
             $trueSizeImg.load(function () {
                 var trueWidth = $trueSizeImg.width(),
