@@ -5,17 +5,16 @@
             , allowResize        : true
             , allowSelect        : true
             , aspectRatio        : 0
-            , imagePath          : 'scripts/libs/imageCrop/outline.gif'
             , minSelect          : [0, 0]
             , minSize            : [0, 0]
             , maxSize            : [0, 0]
-            // , msPolyfill         : 'scripts/libs/imageCrop/background-size-polyfill.htc'
             , outlineOpacity     : 0.5
-            , overlayBgColor     : '#fff'
             , overlayOpacity     : 0.5
+            , overlayBgColor     : '#fff'
             , selectionPosition  : [0, 0]
             , selectionWidth     : 0
             , selectionHeight    : 0
+            , trueImageSize      : [0, 0]
 
             , onChange : function () {}
             , onSelect : function () {}
@@ -29,7 +28,8 @@
 
         var $holder = $('<div />')
                 .css({
-                    position : 'relative'
+                      overflow : 'hidden'
+                    , position : 'relative'
                 })
                 .width($image.width())
                 .height($image.height());
@@ -277,25 +277,28 @@
         function getImageTrueSize () {
             var $src = $image.attr('src');
 
-            var $trueSizeImg = $('<img />')
+            var $trueSizeImg = $('<img class="true-size-image" />')
                 .attr('src', $src).insertAfter('img');
 
-            var trueWidth = $trueSizeImg.width(),
-                trueHeight = $trueSizeImg.height();
+            $trueSizeImg.load(function () {
+                var trueWidth = $trueSizeImg.width(),
+                    trueHeight = $trueSizeImg.height();
 
-            $trueSizeImg.remove();
+                options.trueImageSize[0] = trueWidth;
+                options.trueImageSize[1] = trueHeight;
 
-            return [trueWidth, trueHeight]
+                setTimeout(function() {
+                    $trueSizeImg.remove();
+                }, 100);
+            });
         }
 
         function getCropData () {
-            var trueImageSize = getImageTrueSize();
-
             return {
-                  x      : options.selectionPosition[0] * trueImageSize[0] / $image.width()
-                , y      : options.selectionPosition[1] * trueImageSize[1] / $image.height()
-                , width  : options.selectionWidth * trueImageSize[0] / $image.width()
-                , height : options.selectionHeight * trueImageSize[1] / $image.height()
+                  x      : options.selectionPosition[0] * options.trueImageSize[0] / $image.width()
+                , y      : options.selectionPosition[1] * options.trueImageSize[1] / $image.height()
+                , width  : options.selectionWidth * options.trueImageSize[0] / $image.width()
+                , height : options.selectionHeight * options.trueImageSize[1] / $image.height()
                 , path       : $image.attr('src')
                 , selectionExists : function() {
                     return selectionExists;
@@ -718,6 +721,8 @@
 
             updateInterface('releaseSelection');
         };
+
+        getImageTrueSize();
     };
 
     $.fn.imageCrop = function (customOptions) {
