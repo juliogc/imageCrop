@@ -5,6 +5,7 @@
             , allowResize        : true
             , allowSelect        : true
             , aspectRatio        : 0
+            , handlerSize        : 10
             , minSelect          : [0, 0]
             , minSize            : [0, 0]
             , maxSize            : [0, 0]
@@ -84,11 +85,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -96,11 +97,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -108,11 +109,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -120,11 +121,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity :         0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -132,11 +133,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -144,11 +145,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -156,11 +157,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
@@ -168,11 +169,11 @@
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
-                    , height           : '10px'
+                    , height           : options.handlerSize
                     , opacity          : 0.5
                     , overflow         : 'hidden'
                     , position         : 'absolute'
-                    , width            : '10px'
+                    , width            : options.handlerSize
                 })
                 .insertAfter($selection);
 
