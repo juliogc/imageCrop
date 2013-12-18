@@ -279,11 +279,11 @@
             var x, y;
 
             if (event.originalEvent) {
-                x = event.originalEvent.targetTouches[0].clientX - imageOffset[0],
-                y = event.originalEvent.targetTouches[0].clientY - imageOffset[1];
+                x = event.originalEvent.targetTouches[0].pageX - imageOffset[0],
+                y = event.originalEvent.targetTouches[0].pageY - imageOffset[1];
             } else if (event.targetTouches) {
-                x = event.targetTouches[0].clientX - imageOffset[0],
-                y = event.targetTouches[0].clientY - imageOffset[1];
+                x = event.targetTouches[0].pageX - imageOffset[0],
+                y = event.targetTouches[0].pageY - imageOffset[1];
             }
 
             x = (x < 0) ? 0 : (x > $image.width()) ? $image.width() : x;
