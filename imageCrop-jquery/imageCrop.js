@@ -27,7 +27,7 @@
 
         var $image = $(object);
 
-        var $holder = $('<div />')
+        var $holder = $('<div id="image-crop-holder" />')
                 .css({
                       overflow : 'hidden'
                     , position : 'relative'
@@ -204,21 +204,6 @@
             }
         };
 
-        var isIE = {
-            ie8 : function () {
-                return window.navigator.userAgent.match(/IE 8/i);
-            },
-            ie9 : function () {
-                return window.navigator.userAgent.match(/IE 9/i);
-            },
-            ie10 : function () {
-                return window.navigator.userAgent.match(/IE 10/i);
-            },
-            any : function () {
-                return ( isIE.ie8() || isIE.ie9() || isIE.ie10() )
-            }
-        }
-
         if (options.selectionWidth > options.minSelect[0] && options.selectionHeight > options.minSelect[1]) {
             selectionExists = true;
         } else {
@@ -295,8 +280,8 @@
         function getImageTrueSize () {
             var $src = $image.attr('src');
 
-            var $trueSizeImg = $('<img class="true-size-image" />')
-                .attr('src', $src).insertAfter($image);
+            var $trueSizeImg = $('<img class="true-size-image" src="'+ $src +'" />')
+                .insertAfter($image);
 
             $trueSizeImg.load(function () {
                 var trueWidth = $trueSizeImg.width(),
@@ -309,7 +294,7 @@
                     $trueSizeImg.remove();
                 }, 500);
             });
-        }
+        };
 
         function getCropData () {
             return {
