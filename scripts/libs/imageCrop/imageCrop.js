@@ -27,7 +27,7 @@
 
         var $image = $(object);
 
-        var $holder = $('<div />')
+        var $holder = $('<div></div>')
                 .css({
                       overflow : 'hidden'
                     , position : 'relative'
@@ -40,7 +40,7 @@
                 position : 'absolute'
             });
 
-        var $overlay = $('<div id="image-crop-overlay" />')
+        var $overlay = $('<div id="image-crop-overlay"></div>')
                 .css({
                       backgroundColor : options.overlayBgColor
                     , opacity         : options.overlayOpacity
@@ -51,7 +51,7 @@
                 .height($image.height())
                 .insertAfter($image);
 
-        var $trigger = $('<div id="image-crop-trigger" />')
+        var $trigger = $('<div id="image-crop-trigger"></div>')
                 .css({
                       backgroundColor : '#000000'
                     , opacity         : 0
@@ -61,7 +61,7 @@
                 .height($image.height())
                 .insertAfter($overlay);
 
-        var $outline = $('<div id="image-crop-outline" />')
+        var $outline = $('<div id="image-crop-outline"></div>')
                 .css({
                       background : '#ffffff url(\''+ options.imagePath +'\')'
                     , opacity    : options.outlineOpacity
@@ -70,7 +70,7 @@
                 })
                 .insertAfter($trigger);
 
-        var $selection = $('<div id="image-crop-selection" />')
+        var $selection = $('<div id="image-crop-selection"></div>')
                 .css({
                       background     : 'url('+ $image.attr('src') +') no-repeat'
                     , backgroundSize : $image.width() + 'px ' + $image.height() + 'px'
@@ -79,7 +79,7 @@
                 })
                 .insertAfter($outline);
 
-        var $nwResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-nw-resize-handler" />')
+        var $nwResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-nw-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -91,7 +91,7 @@
                 })
                 .insertAfter($selection);
 
-        var $nResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-n-resize-handler" />')
+        var $nResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-n-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -103,7 +103,7 @@
                 })
                 .insertAfter($selection);
 
-        var $neResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-ne-resize-handler" />')
+        var $neResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-ne-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -115,7 +115,7 @@
                 })
                 .insertAfter($selection);
 
-        var $wResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-w-resize-handler" />')
+        var $wResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-w-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -127,7 +127,7 @@
                 })
                 .insertAfter($selection);
 
-        var $eResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-e-resize-handler" />')
+        var $eResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-e-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -139,7 +139,7 @@
                 })
                 .insertAfter($selection);
 
-        var $swResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-sw-resize-handler" />')
+        var $swResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-sw-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -151,7 +151,7 @@
                 })
                 .insertAfter($selection);
 
-        var $sResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-s-resize-handler" />')
+        var $sResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-s-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
@@ -163,7 +163,7 @@
                 })
                 .insertAfter($selection);
 
-        var $seResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-se-resize-handler" />')
+        var $seResizeHandler = $('<div class="image-crop-resize-handler" id="image-crop-se-resize-handler"></div>')
                 .css({
                       backgroundColor  : '#000000'
                     , border           : '1px #ffffff solid'
