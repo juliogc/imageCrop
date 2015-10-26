@@ -13,3 +13,4 @@ Config/email.php
 node_modules/
 npm-debug.log
 .idea/
+scripts/vendors/
