@@ -1,0 +1,11 @@
+{
+  "name": "imageCrop",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "1.10.2",
+    "requirejs": "2.1.9"
+  }
+}
