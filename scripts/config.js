@@ -1,7 +1,7 @@
 require.config({
     deps: ['app'],
     paths: {
-        jquery: 'libs/jquery/jquery',
+        jquery: 'vendors/jquery/jquery',
         bootstrapAffix: 'libs/sass-bootstrap/js/affix',
         bootstrapAlert: 'libs/sass-bootstrap/js/alert',
         bootstrapButton: 'libs/sass-bootstrap/js/button',
